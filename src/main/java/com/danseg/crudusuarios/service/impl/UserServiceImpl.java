@@ -35,7 +35,6 @@ public class UserServiceImpl implements UserService {
         user.setEmail(user.getEmail().toLowerCase());
         // Cifra la contraseña antes de guardarla
         String encryptedPassword = passwordEncoder.encode(user.getPassword());
-        System.out.println(encryptedPassword);
         user.setPassword(encryptedPassword);
         return userRepository.save(user);
     }
@@ -63,6 +62,9 @@ public class UserServiceImpl implements UserService {
         newData.setPhoneNumber(user.getPhoneNumber());
         newData.setEmail(user.getEmail().toLowerCase());
         newData.setBirthday(user.getBirthday());
+        // Cifra la contraseña antes de guardarla
+        String encryptedPassword = passwordEncoder.encode(user.getPassword());
+        newData.setPassword(encryptedPassword);
 
         return userRepository.save(newData);
     }
@@ -84,6 +86,7 @@ public class UserServiceImpl implements UserService {
         if (!isInDB) {
             return false;
         }
+        userRepository.deleteById(userId);
         return true;
     }
 

@@ -21,17 +21,17 @@ public class User {
 
     @NotBlank(message = "El nombre es obligatorio")
     @Size(min = 3, max = 30, message = "El nombre debe tener entre 3 y 30 caracteres")
-    @Pattern(regexp = "[A-Za-z]+", message = "El nombre sólo puede contener letras")
+    @Pattern(regexp = "[A-Za-z ]+", message = "El nombre sólo puede contener letras")
     @Column(name = "name", length = 30, nullable = false)
     private String name;
 
     @NotBlank(message = "El apellido es obligatorio")
     @Size(min = 4, max = 30, message = "El nombre debe tener entre 4 y 30 caracteres")
-    @Pattern(regexp = "[A-Za-z]+", message = "El nombre sólo puede contener letras")
+    @Pattern(regexp = "[A-Za-z ]+", message = "El nombre sólo puede contener letras")
     @Column(name = "last_name", length = 30, nullable = false)
     private String lastName;
 
-    @Pattern(regexp = "\\d{10}", message = "El teléfono sólo puede contener 10 dígitos")
+    @Pattern(regexp = "\\d{0,10}", message = "El teléfono sólo puede contener 0 y 10 dígitos")
     @Column(name = "phone_number", length = 10, nullable = true)
     private String phoneNumber;
 
